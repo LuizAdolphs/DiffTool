@@ -1,0 +1,10 @@
+version: '3'
+services:
+  api:
+    build: ./api
+    ports:
+      - "5000:5000"
+  web:
+    build: ./app
+    ports:
+      - "80:80"
