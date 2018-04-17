@@ -1,0 +1,11 @@
+language: csharp
+dist: trusty
+mono: none
+dotnet: 1.0.1
+install:
+- cd api/
+- dotnet restore
+script:
+- cd test/api/
+- dotnet build
+- dotnet test 
