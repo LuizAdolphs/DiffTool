@@ -6,6 +6,6 @@ install:
 - cd api/
 - dotnet restore
 script:
-- cd test/api/
+- cd ../test/api/
 - dotnet build
 - dotnet test 
