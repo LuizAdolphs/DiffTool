@@ -1,0 +1,28 @@
+﻿<Properties StartupConfiguration="{92F3A5E9-ED35-428D-ADDD-78A28041E2A9}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="test/api/DataCompareTest.cs">
+    <Files>
+      <File FileName="api/Infrastructure/V1/IHashStrategy.cs" Line="5" Column="5" />
+      <File FileName="api/Infrastructure/V1/Md5HashStrategy.cs" Line="16" Column="41" />
+      <File FileName="api/Controllers/V1/DiffController.cs" Line="35" Column="23" />
+      <File FileName="api/Program.cs" Line="17" Column="1" />
+      <File FileName="api/Startup.cs" Line="49" Column="26" />
+      <File FileName="api/Infrastructure/V1/RawRequestBodyInputFormatter.cs" Line="24" Column="1" />
+      <File FileName="api/Models/V1/SideEnum.cs" Line="1" Column="1" />
+      <File FileName="api/Infrastructure/V1/ICache.cs" Line="1" Column="1" />
+      <File FileName="api/Infrastructure/V1/DotNetMemoryCache.cs" Line="1" Column="1" />
+      <File FileName="api/Infrastructure/V1/IEncodeDecodeStrategy.cs" Line="10" Column="6" />
+      <File FileName="api/Infrastructure/V1/Base64EncodeDecodeStrategy.cs" Line="13" Column="1" />
+      <File FileName="api/Models/V1/Data.cs" Line="1" Column="1" />
+      <File FileName="api/Models/V1/DataCompare.cs" Line="25" Column="13" />
+      <File FileName="test/api/DataCompareTest.cs" Line="26" Column="13" />
+      <File FileName="test/api/Base64EncodeDecodeStrategyTest.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.DiffProject PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>

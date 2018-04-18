@@ -1,4 +1,4 @@
-namespace api
+namespace DiffProject.Test.Api
 {
     using System;
     using Xunit;

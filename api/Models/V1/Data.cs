@@ -1,4 +1,4 @@
-namespace api.Models.V1
+namespace DiffProject.Models.V1
 {
     using System.Threading.Tasks;
     using DiffProject.Infrastructure.V1;
@@ -45,5 +45,10 @@ namespace api.Models.V1
                 default: return false;
             }
 		}
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
 	}
 }

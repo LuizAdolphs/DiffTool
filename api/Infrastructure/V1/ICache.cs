@@ -1,7 +1,7 @@
 ﻿namespace DiffProject.Infrastructure.V1
 {
     using System.Threading.Tasks;
-    using api.Models.V1;
+    using DiffProject.Models.V1;
 
     public interface ICache
     {

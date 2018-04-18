@@ -2,7 +2,7 @@
 {
 	using System;
 	using System.Threading.Tasks;
-	using api.Models.V1;
+	using DiffProject.Models.V1;
     using Microsoft.Extensions.Caching.Memory;
 
     public class DotNetMemoryCache : ICache

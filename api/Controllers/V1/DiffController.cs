@@ -1,6 +1,5 @@
 ﻿namespace DiffProject.Controllers.V1
 {
-	using api.Models.V1;
     using DiffProject.Infrastructure.V1;
     using DiffProject.Models.V1;
     using Microsoft.AspNetCore.Mvc;
