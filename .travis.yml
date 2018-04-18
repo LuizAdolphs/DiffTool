@@ -12,6 +12,8 @@ matrix:
       - dotnet build
       - dotnet test 
     - language: node_js
+      node:
+        - "9"
       install:
       - cd app/
       - yarn install
