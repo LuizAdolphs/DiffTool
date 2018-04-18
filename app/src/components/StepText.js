@@ -21,10 +21,12 @@ class StepText extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            id: "",
-            text: ""
-        };
+        this.state = this.props.currentData ? 
+            this.props.currentData :
+            {
+                id: "",
+                text: ""
+            };
     }
 
     static propTypes = {
@@ -59,7 +61,6 @@ class StepText extends Component {
                         label="Json"
                         multiline
                         rows="10"
-                        defaultValue=""
                         margin="normal"
                         fullWidth
                         value={this.state.text}

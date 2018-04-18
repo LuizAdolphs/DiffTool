@@ -18,8 +18,6 @@ const styles = theme => ({
 });
 
 class DiffResult extends Component {
-    
-
 
     render() {
 

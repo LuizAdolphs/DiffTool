@@ -32,7 +32,28 @@ namespace DiffProject.Test.Api
         }
 
         [Fact]
-        public void TestWithOneDifferenLineText()
+        public void TestWithOneLineDifferen()
+        {
+            var leftText = new Data("1",
+                SideEnum.Left,
+                "one",
+                new Md5HashStrategy());
+
+            var rightText = new Data("1",
+                SideEnum.Right,
+                @"two",
+                new Md5HashStrategy());
+
+            var dataCompare = new DataCompare(leftText, rightText);
+
+            var result = dataCompare.Compare();
+
+            Assert.Equal(result.LeftResult[0].Match, result.RightResult[0].Match);
+            Assert.NotEqual(result.LeftResult[0].Line, result.RightResult[0].Line);
+        }
+
+        [Fact]
+        public void TestWithOneDifferenLineAmongText()
         {
             var leftText = new Data("1",
                 SideEnum.Left, 

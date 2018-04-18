@@ -24,7 +24,7 @@ const styles = theme => ({
     }
 });
 
-class DiffApp extends Component {
+export class DiffApp extends Component {
     static propTypes = {
         classes: PropTypes.object.isRequired,
         store: PropTypes.object.isRequired
@@ -67,8 +67,8 @@ class DiffApp extends Component {
                         </Stepper>
                         <Grid container justify="center">
                             <Grid item xs={12}>
-                                <Route exact path="/(left|)/" render={(props) => <StepText nextStep={addLeft}/>} />
-                                <Route exact path="/right" render={(props) => <StepText nextStep={addRight}/>} />
+                                <Route exact path="/(left|)/" render={(props) => <StepText nextStep={addLeft} currentData={values.diff.left}/>} />
+                                <Route exact path="/right" render={(props) => <StepText nextStep={addRight}  currentData={values.diff.right}/>} />
                                 <Route exact path="/diff" render={(props) => <DiffResult result={values.diff.diff}/>} />
                             </Grid>
                         </Grid>

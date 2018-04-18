@@ -4,7 +4,15 @@ import {
     SHOW_DIFFERENCE
 } from '../actions/actions'
 
-function diffReducer(state = { left: {}, right: {}, diff: { leftResult: [], rightResult: [] } }, action){
+function diffReducer(state = { 
+        left: { id: "", text: "" }, 
+        right: { id: "", text: "" }, 
+        diff: { 
+            leftResult: [], 
+            rightResult: [] 
+        } 
+    }, action){
+
     switch (action.type) {
         case ADD_LEFT:
             return {

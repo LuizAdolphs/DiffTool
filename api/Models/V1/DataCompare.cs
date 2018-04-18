@@ -103,7 +103,7 @@
                             rightProcessedLines.Add(new DataCompareLine
                             {
                                 LineIndex = lineMatched,
-                                Line = string.Empty,
+                                Line = rightLines[line],
                                 Match = false
                             });
                         }
