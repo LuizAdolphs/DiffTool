@@ -5,17 +5,17 @@ matrix:
       mono: none
       dotnet: 2.0.0
       install:
-      - cd api/
-      - dotnet restore
+        - cd api/
+        - dotnet restore
       script:
-      - cd ../test/api/
-      - dotnet build
-      - dotnet test 
+        - cd ../test/api/
+        - dotnet build
+        - dotnet test 
     - language: node_js
       node:
         - "9"
       install:
-      - cd app/
-      - yarn install
+        - cd app/
+        - yarn install
       script:
-      - yarn test 
+        - yarn test 
