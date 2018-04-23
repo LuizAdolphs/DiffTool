@@ -3,18 +3,14 @@ import PropTypes from 'prop-types';
 
 import { Provider, connect } from 'react-redux';
 
-import Grid from 'material-ui/Grid';
 import { withStyles } from 'material-ui/styles';
-import Stepper, { Step, StepLabel } from 'material-ui/Stepper';
 
-import StepText from './StepText';
-import DiffResult from './DiffResult';
+import Diff from './Diff';
+import Steps from './Steps';
 
 import { addLeftAsync, addRightAsync } from '../actions/actions';
 
-import {
-    Route
-  } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom';
 
 import { ConnectedRouter } from 'react-router-redux';
 
@@ -25,53 +21,22 @@ const styles = theme => ({
 });
 
 export class DiffApp extends Component {
+
     static propTypes = {
         classes: PropTypes.object.isRequired,
         store: PropTypes.object.isRequired
     };
 
-    findActiveStep = (location) => {
-        if (location == null) {
-            return 0;
-        }
-
-        switch(location.pathname){
-            case "/diff":
-                return 2;
-            case "/right":
-                return 1;
-            case "/left":
-            default:
-                return 0;
-        }
-    }
-
     render() {
-        const { classes, store, addLeft, addRight, history, values } = this.props;
-
-        const steps = ["Left Text", "Right Text", "Difference"];
+        const { classes, store, history, values, actions } = this.props;
 
         return (
             <Provider store={store}>
                 <ConnectedRouter history={history}>
                     <div className={classes.root}>
-                        <Stepper activeStep={this.findActiveStep(values.router.location)}>
-                            {steps.map((label, index) => {
-                            
-                                return (
-                                    <Step key={label}>
-                                        <StepLabel>{label}</StepLabel>
-                                    </Step>
-                                );
-                            })}
-                        </Stepper>
-                        <Grid container justify="center">
-                            <Grid item xs={12}>
-                                <Route exact path="/(left|)/" render={(props) => <StepText nextStep={addLeft} currentData={values.diff.left}/>} />
-                                <Route exact path="/right" render={(props) => <StepText nextStep={addRight}  currentData={values.diff.right}/>} />
-                                <Route exact path="/diff" render={(props) => <DiffResult result={values.diff.diff}/>} />
-                            </Grid>
-                        </Grid>
+                        {/* <Route exact path="/(diff|)/" render={(props) => <Diff />} /> */}
+                        <Redirect from="/" to="/steps/left" />
+                        <Route path="/steps" render={(routeProps) => <Steps {...routeProps} {...values} {...actions} />} />
                     </div>
                 </ConnectedRouter>
             </Provider>
@@ -87,8 +52,10 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        addLeft: (data) => dispatch(addLeftAsync(data)),
-        addRight: (data) => dispatch(addRightAsync(data)),
+        actions: {
+            addLeft: (data) => dispatch(addLeftAsync(data)),
+            addRight: (data) => dispatch(addRightAsync(data)),
+        }
     };
 }
 

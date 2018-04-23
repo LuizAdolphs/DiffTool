@@ -4,18 +4,21 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    public class DataCompare
+    public struct DataCompare
     {
-        Data _leftData;
-        Data _rightData;
+        public Data LeftData;
+        public Data RightData;
 
-        public List<DataCompareLine> LeftResult { get; private set; } = new List<DataCompareLine>();
-        public List<DataCompareLine> RightResult { get; private set; } = new List<DataCompareLine>();
+        public List<DataCompareLine> LeftResult;
+        public List<DataCompareLine> RightResult;
 
         public DataCompare(Data left, Data right)
         {
-            _leftData = left;
-            _rightData = right;
+            LeftData = left;
+            RightData = right;
+
+            LeftResult = new List<DataCompareLine>();
+            RightResult = new List<DataCompareLine>();
         }
 
         public DataCompare Compare()
@@ -23,9 +26,9 @@
             var leftProcessedLines = new List<DataCompareLine>();
             var rightProcessedLines = new List<DataCompareLine>();
 
-            if (_leftData.Equals(_rightData))
+            if (LeftData.Equals(RightData))
             {
-                leftProcessedLines = _leftData
+                leftProcessedLines = LeftData
                     .Text
                     .Split('\n')
                     .Select((line, index) =>
@@ -43,8 +46,8 @@
             }
             else
             {
-                var leftLines = _leftData.Text.Split('\n');
-                var rightLines = _rightData.Text.Split('\n');
+                var leftLines = LeftData.Text.Split('\n');
+                var rightLines = RightData.Text.Split('\n');
 
                 var totalLineCount = leftLines.Length >= rightLines.Length ? leftLines.Length : rightLines.Length;
 

@@ -6,9 +6,9 @@ namespace DiffProject.Models.V1
 
     public struct Data
     {
-        public string Id { get; private set; }
-        public string Text { get; private set; }
-        public SideEnum Side { get; private set; }
+        public string Id { get; set; }
+        public string Text { get; set; }
+        public SideEnum Side { get; set; }
 
         private string _hash;
 

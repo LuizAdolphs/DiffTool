@@ -11,13 +11,11 @@
     {
         readonly IHashStrategy _hashStrategy;
         readonly ICache _cache;
-        readonly IEncodeDecodeStrategy _encodeDecode;
 
-        public DiffController(IHashStrategy hashStrategy, ICache cache, IEncodeDecodeStrategy encodeDecode)
+        public DiffController(IHashStrategy hashStrategy, ICache cache)
         {
             this._hashStrategy = hashStrategy;
             this._cache = cache;
-            this._encodeDecode = encodeDecode;
         }
 
         [HttpGet("{id}")]
@@ -45,9 +43,15 @@
             return Ok();
         }
 
+        [HttpPost("compare")]
+        public IActionResult Compare([FromBody]DataCompare compare)
+        {
+            return new JsonResult(compare.Compare());
+        }
+
         async Task PersistInCache(string id, SideEnum side, string value)
         {
-            await this._cache.AddAsync(id + side.ToString(), new Data(id, side, await this._encodeDecode.Decode(value), this._hashStrategy));
+            await this._cache.AddAsync(id + side.ToString(), new Data(id, side, value, this._hashStrategy));
         }
     }
 }

@@ -2,40 +2,47 @@
 {
 	using System;
 	using System.IO;
+    using System.Linq;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc.Formatters;
     using Microsoft.Net.Http.Headers;
+    using Newtonsoft.Json;
 
     public class RawRequestBodyInputFormatter : InputFormatter
     {
-        public RawRequestBodyInputFormatter()
+        IEncodeDecodeStrategy _encodeDecodeStrategy;
+
+        static string _applicationJson = "application/json";
+        static string _textPlain = "text/plain";
+
+        public RawRequestBodyInputFormatter(IEncodeDecodeStrategy encodeDecodeStrategy)
         {
-            SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/plain"));
-            SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/octet-stream"));
+            this._encodeDecodeStrategy = encodeDecodeStrategy;
+
+            SupportedMediaTypes.Add(new MediaTypeHeaderValue(_applicationJson));
+            SupportedMediaTypes.Add(new MediaTypeHeaderValue(_textPlain));
         }
 
         public override async Task<InputFormatterResult> ReadRequestBodyAsync(InputFormatterContext context)
         {
+
             var request = context.HttpContext.Request;
             var contentType = context.HttpContext.Request.ContentType;
 
-
-            if (string.IsNullOrEmpty(contentType) || contentType.Contains("text/plain"))
+            if (string.IsNullOrEmpty(contentType) || 
+                contentType.Contains(_applicationJson) ||
+                contentType.Contains(_textPlain))
             {
                 using (var reader = new StreamReader(request.Body))
                 {
                     var content = await reader.ReadToEndAsync();
-                    return await InputFormatterResult.SuccessAsync(content);
-                }
-            }
 
-            if (contentType.Contains("application/octet-stream"))
-            {
-                using (var ms = new MemoryStream())
-                {
-                    await request.Body.CopyToAsync(ms);
-                    var content = ms.ToArray();
-                    return await InputFormatterResult.SuccessAsync(content);
+                    var decoded = await _encodeDecodeStrategy.Decode(content);
+
+                    if(contentType.Contains(_applicationJson))
+                        return await InputFormatterResult.SuccessAsync(JsonConvert.DeserializeObject(decoded, context.ModelType));
+
+                    return await InputFormatterResult.SuccessAsync(decoded);
                 }
             }
 
@@ -49,8 +56,8 @@
             var contentType = context.HttpContext.Request.ContentType;
 
             if (string.IsNullOrEmpty(contentType) || 
-                contentType.Contains("text/plain") ||
-                contentType.Contains("application/octet-stream"))
+                contentType.Contains(_applicationJson) ||
+                contentType.Contains(_textPlain))
                 return true;
 
             return false;

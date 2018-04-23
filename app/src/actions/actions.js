@@ -27,7 +27,7 @@ export function addLeftAsync(data) {
         }).then(function(response) {
             dispatch(addLeft(data));
         }).then(function() {
-            dispatch(push('/right'));
+            dispatch(push('/steps/right'));
         });
     }
 }
@@ -59,7 +59,7 @@ export function showDifferenceAsync(id) {
         }).then(function (json) {
             dispatch(showDifference(json));
         }).then(function() {
-            dispatch(push('/diff'));
+            dispatch(push('/steps/diffresult'));
         });
     }
 }

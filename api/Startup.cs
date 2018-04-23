@@ -27,7 +27,7 @@
                      .AllowAnyMethod();
                 });
             });
-			services.AddMvc(o => o.InputFormatters.Insert(0, new RawRequestBodyInputFormatter()));
+            services.AddMvc(o => o.InputFormatters.Insert(0, new RawRequestBodyInputFormatter(new Base64EncodeDecodeStrategy())));
             services.AddApiVersioning(o => o.ReportApiVersions = true);
 
             services.AddTransient<IHashStrategy, Md5HashStrategy>();
