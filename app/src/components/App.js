@@ -34,8 +34,8 @@ export class DiffApp extends Component {
             <Provider store={store}>
                 <ConnectedRouter history={history}>
                     <div className={classes.root}>
-                        {/* <Route exact path="/(diff|)/" render={(props) => <Diff />} /> */}
-                        <Redirect from="/" to="/steps/left" />
+                        <Route exact path="/" render={() => <Redirect to="/steps/left"/>} />
+                        <Route path="/diff" render={(routeProps) => <Diff {...routeProps} {...values} {...actions} />} />
                         <Route path="/steps" render={(routeProps) => <Steps {...routeProps} {...values} {...actions} />} />
                     </div>
                 </ConnectedRouter>

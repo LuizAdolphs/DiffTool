@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Route, Redirect } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import Grid from 'material-ui/Grid';
 import Stepper, { Step, StepLabel } from 'material-ui/Stepper';
