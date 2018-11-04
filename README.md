@@ -1,6 +1,6 @@
 # Diff Tool [![travis build status](https://travis-ci.org/LuizAdolphs/DiffTool.svg?branch=master)](https://travis-ci.org/LuizAdolphs/DiffTool/)
 
-[![Try in PWD](https://raw.githubusercontent.com/play-with-docker/stacks/master/assets/images/button.png)](https://labs.play-with-docker.com/?stack=https://raw.githubusercontent.com/LuizAdolphs/DiffTool/master/pwd-stack.yml)
+[![Try in PWD](https://raw.githubusercontent.com/play-with-docker/stacks/master/assets/images/button.png)](https://labs.play-with-docker.com/?stack=https://raw.githubusercontent.com/LuizAdolphs/DiffTool/master/pwd-docker-compose.yml)
 
 This software is a proof of concept using **React** (with material ui, redux, redux thunk, react router) and **aspnet core** web api (version 2) using **Docker** and docker-compose.
 
