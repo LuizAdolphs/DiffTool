@@ -1,6 +1,6 @@
 # Diff Tool [![travis build status](https://travis-ci.org/LuizAdolphs/DiffTool.svg?branch=master)](https://travis-ci.org/LuizAdolphs/DiffTool/)
 
-[![Try in PWD](https://raw.githubusercontent.com/play-with-docker/stacks/master/assets/images/button.png)](https://raw.githubusercontent.com/LuizAdolphs/DiffTool/master/docker-compose.yml)
+[![Try in PWD](https://labs.play-with-docker.com/?stack=https://raw.githubusercontent.com/play-with-docker/stacks/master/assets/images/button.png)](https://raw.githubusercontent.com/LuizAdolphs/DiffTool/master/docker-compose.yml)
 
 Hi! I'm your first Markdown file in **StackEdit**. If you want to learn about StackEdit, you can read me. If you want to play with Markdown, you can edit me. If you have finished with me, you can just create new files by opening the **file explorer** on the left corner of the navigation bar.
 
