@@ -1,10 +1,10 @@
 version: '3'
 services:
   api:
-    build: ./api
+    build: adolphsluiz/difftoolapi
     ports:
       - "5000:5000"
   web:
-    build: ./app
+    build: adolphsluiz/difftoolapp
     ports:
       - "80:80"

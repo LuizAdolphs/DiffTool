@@ -20,3 +20,16 @@ matrix:
         - yarn install
       script:
         - yarn test 
+    - language: generic
+      dist: trusty
+      sudo: true
+      script:
+      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      - docker build -t difftoolapi ./api
+      - docker images
+      - docker tag difftoolapi $DOCKER_USERNAME/difftoolapi
+      - docker push $DOCKER_USERNAME/difftoolapi
+      - docker build -t difftoolapp ./app
+      - docker images
+      - docker tag difftoolapp $DOCKER_USERNAME/difftoolapp
+      - docker push $DOCKER_USERNAME/difftoolapp
