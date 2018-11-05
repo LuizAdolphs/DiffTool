@@ -15,8 +15,16 @@ export function showDifference(data) {
 }
 
 //async function for persistance
+const verifyPWD = () => {
+    if (window.location.href.indexOf("play-with-docker")) {
+        return window.location.href.replace("-80.", "-5000.")
+    }
 
-const url = "http://localhost:5000";
+    return "http://localhost:5000";
+};
+
+const url = verifyPWD();
+
 
 export function addLeftAsync(data) {
     return function(dispatch) {
