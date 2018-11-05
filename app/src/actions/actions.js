@@ -20,15 +20,14 @@ const verifyPWD = () => {
         return window.location.href.replace("-80.", "-5000.")
     }
 
-    return "http://localhost:5000";
+    return "http://localhost:5000/";
 };
 
 const url = verifyPWD();
 
-
 export function addLeftAsync(data) {
     return function(dispatch) {
-        fetch(`${url}/api/v1/diff/${data.id}/left/`, {
+        fetch(`${url}api/v1/diff/${data.id}/left/`, {
             method: 'post',
             mode: 'cors',
             body: btoa(data.text)
@@ -42,7 +41,7 @@ export function addLeftAsync(data) {
 
 export function addRightAsync(data) {
     return function(dispatch) {
-        fetch(`${url}/api/v1/diff/${data.id}/right/`, {
+        fetch(`${url}api/v1/diff/${data.id}/right/`, {
             method: 'post',
             mode: 'cors',
             body: btoa(data.text),
@@ -59,7 +58,7 @@ export function addRightAsync(data) {
 
 export function showDifferenceAsync(id) {
     return function(dispatch) {
-        fetch(`${url}/api/v1/diff/${id}`, {
+        fetch(`${url}api/v1/diff/${id}`, {
             method: 'get',
             mode: 'cors'
         }).then(function(response) {
